@@ -122,12 +122,12 @@
          margin: 15px;
          font-family: SimSun, NSimSun, 'Lucida Sans Unicode', 'Comics Sans MS', Candara, Calibri;
          }
-         button { width: 200px; text-align: center; }
+         x-button { width: fit-content; text-align: center; margin-left: auto; margin-right: auto;  }
          button.saveButton {
          width: 30%;
          text-align: right;
          }
-         #saveImage {
+         button, #saveImage {
          border:  solid 2px #eee;
          border-radius:  5px;
          padding: 20px;
@@ -180,12 +180,13 @@
             </div>   
          </div>
 
-         <div>
+         <div><center>
             <br><br>
             <button onclick="clearContent('boxA')">Clear A</button> &nbsp;
             <button onclick="clearContent('boxB')">Clear B</button> &nbsp;
             <button onclick="clearContent('boxC')">Clear C</button> &nbsp;
             <button onclick="clearContent('boxD')">Clear D</button> &nbsp;
+            </center>
          </div>
          
          

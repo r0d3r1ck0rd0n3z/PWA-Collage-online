@@ -122,7 +122,7 @@
          margin: 15px;
          font-family: SimSun, NSimSun, 'Lucida Sans Unicode', 'Comics Sans MS', Candara, Calibri;
          }
-         .saveButton {
+         button, #saveButton {
          width: 30%;
          text-align: right;
          }
@@ -175,16 +175,18 @@
             </div>
             <div class="saveButton">
                <button id="saveImage">Save image</button>
-            </div>
-            
-                     <br>
-            <button onclick="clearContent('boxA')">Reset image</button>
-            <button onclick="clearContent('boxB')">Reset image</button>
-            <button onclick="clearContent('boxC')">Reset image</button>
-            <button onclick="clearContent('boxD')">Reset image</button>
-            
+            </div>   
          </div>
 
+         <div>
+            <br><br>
+            <button onclick="clearContent('boxA')">Clear A</button> &nbsp;
+            <button onclick="clearContent('boxB')">Clear B</button> &nbsp;
+            <button onclick="clearContent('boxC')">Clear C</button> &nbsp;
+            <button onclick="clearContent('boxD')">Clear D</button> &nbsp;
+         </div>
+         
+         
       </div>
       <script>
          function handleFileChange(event) {

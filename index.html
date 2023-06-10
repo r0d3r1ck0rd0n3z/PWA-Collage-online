@@ -175,15 +175,17 @@ button,
 }
 
 .deleteUI {
-  display: none;
+  x-display: none;
   position: absolute;
   top: 0;
   background-color: #555;
   width: 100%;
-  height: 100%;
+  height: 0%;
   opacity: 0.5;
   text-align: center;
   vertical-align: middle;
+  transition: height 0.2s ease-in-out;
+  overflow: hidden;
 }
 
 .reset {
@@ -212,6 +214,7 @@ button,
   margin-top: -15px;
   font-size: 10px;
 }
+
 
          
          
@@ -280,150 +283,150 @@ button,
       
 <script>
 
-   function handleFileChange(event) {
-
-     removeLightBox();      
-     // Get the file from the event object.
-     var file = event.target.files[0];                 
-
-     // Identify all the elements to be modified 
-     const parent = event.target.getAttribute('class');
-     const boxOne = document.querySelector("#" + parent);
-     const labelB = document.querySelector("#" + parent + " .custom-file-upload");
-     const inputB = document.querySelector("#" + parent + " ." + parent);
-     const pinchZ = document.querySelector('#' + parent +  ' div.pinch-zoom');
-
-     // Check if the file is an image.
-     if (file.type === "image/jpeg" || file.type === "image/png") {  
-       var image = document.createElement("img");        // Create a new image element.
-       image.src = window.URL.createObjectURL(file);     // Set the image's src to the file's data URL.
-       pinchZ.appendChild(image);                        // Append the image to the document body.
-       inputB.remove();
-       labelB.remove();
-
-       new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { });
-
-       var newDiv = document.createElement("div");
-       newDiv.className = "deleteUI";
-       newDiv.style["display"] = "none";
-       newDiv.innerHTML = `<div class=reset onclick="clearContent('` + parent + `')"><b>&#x21bb;</b><br><small>Reset frame</small></div>`;
-       boxOne.appendChild(newDiv);
-
-
-     } else {
-       // Show an error message.
-       alert("Please select an image file.");            
-     }
-   }
-
-
-   document.addEventListener('change', (e) => {
-     // Check if the clicked element is a button
-     if (e.target.tagName === 'INPUT') {
-     // Do something when the button is clicked
-       handleFileChange(e);
-       }
-   });
-
-
-
-
-
-
-     const main = document.getElementById("mainContainer");
-     const boxA = document.getElementById("boxA");
-     const boxB = document.getElementById("boxB");
-     const boxC = document.getElementById("boxC");
-     const boxD = document.getElementById("boxD");
-
-     const sqr = "square", col = "column", row = "row", hid = "hiddenBox";
-     const allClasses = [sqr, col, row, hid];  
-
-
-   function clearClasses() {
-     boxA.classList.remove(...allClasses);
-     boxB.classList.remove(...allClasses);
-     boxC.classList.remove(...allClasses);
-     boxD.classList.remove(...allClasses);
-   };
-
-   function toggleClassesOn(x,a,b,c,d) {
-     main.style.flexDirection = x ;
-     clearClasses();
-     boxA.classList.add( a );
-     boxB.classList.add( b );
-     boxC.classList.add( c ); 
-     boxD.classList.add( d ); 
-   };
-
-
-   document.getElementById("optionA").addEventListener("click", function() {toggleClassesOn( row , row , row , hid , hid )});
-   document.getElementById("optionB").addEventListener("click", function() {toggleClassesOn( col , col , col , hid , hid )});
-   document.getElementById("optionC").addEventListener("click", function() {toggleClassesOn( col , sqr , sqr , col , hid )});
-   document.getElementById("optionD").addEventListener("click", function() {toggleClassesOn( col , col , sqr , sqr , hid )});
-   document.getElementById("optionE").addEventListener("click", function() {toggleClassesOn( row , sqr , sqr , row , hid )});
-   document.getElementById("optionF").addEventListener("click", function() {toggleClassesOn( row , row , sqr , sqr , hid )});
-   document.getElementById("optionG").addEventListener("click", function() {toggleClassesOn( row , sqr , sqr , sqr , sqr )});
-
-
-
-
-   document.getElementById("saveImage").addEventListener("click", function() {
-       html2canvas(document.querySelector("#mainContainer")).then(canvas => {
-         downloadTheCollage(canvas.toDataURL("image/jpeg", 1.0), "collage.jpg" );
-         });
-   });
-
-   function downloadTheCollage(uri, filename) {
-       var link = document.createElement('a');
-       if (typeof link.download === 'string') {
-           link.href = uri;
-           link.download = filename;
-           document.body.appendChild(link);
-           link.click();
-           document.body.removeChild(link);
+         function handleFileChange(event) {
+           
+           removeLightBox();      
+           // Get the file from the event object.
+           var file = event.target.files[0];                 
+         
+           // Identify all the elements to be modified 
+           const parent = event.target.getAttribute('class');
+           const boxOne = document.querySelector("#" + parent);
+           const labelB = document.querySelector("#" + parent + " .custom-file-upload");
+           const inputB = document.querySelector("#" + parent + " ." + parent);
+           const pinchZ = document.querySelector('#' + parent +  ' div.pinch-zoom');
+          
+           // Check if the file is an image.
+           if (file.type === "image/jpeg" || file.type === "image/png") {  
+             var image = document.createElement("img");        // Create a new image element.
+             image.src = window.URL.createObjectURL(file);     // Set the image's src to the file's data URL.
+             pinchZ.appendChild(image);                        // Append the image to the document body.
+             inputB.remove();
+             labelB.remove();
+             
+             new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { });
+             
+             var newDiv = document.createElement("div");
+             newDiv.className = "deleteUI";
+             newDiv.style["height"] = "0%";
+             newDiv.innerHTML = `<div class=reset onclick="clearContent('` + parent + `')"><b>&#x21bb;</b><br><small>Reset frame</small></div>`;
+             boxOne.appendChild(newDiv);
+             
+             
            } else {
-             window.open(uri);
+             // Show an error message.
+             alert("Please select an image file.");            
+           }
+         }
+         
+         
+         document.addEventListener('change', (e) => {
+           // Check if the clicked element is a button
+           if (e.target.tagName === 'INPUT') {
+           // Do something when the button is clicked
+             handleFileChange(e);
              }
-   };
-
-
-   // RESET
-
-
-function clearContent(id) {
-  const reset = document.getElementById(id);
-  const orig = `<div class="pinch-zoom"><input type="file" class="` + id + `"/></div><label for="file-upload" class="custom-file-upload"></label>`;
-  reset.innerHTML = orig;           
-  };
-
+         });
+         
+         
+         
+         
+         
+         
+           const main = document.getElementById("mainContainer");
+           const boxA = document.getElementById("boxA");
+           const boxB = document.getElementById("boxB");
+           const boxC = document.getElementById("boxC");
+           const boxD = document.getElementById("boxD");
+         
+           const sqr = "square", col = "column", row = "row", hid = "hiddenBox";
+           const allClasses = [sqr, col, row, hid];  
+         
+         
+         function clearClasses() {
+           boxA.classList.remove(...allClasses);
+           boxB.classList.remove(...allClasses);
+           boxC.classList.remove(...allClasses);
+           boxD.classList.remove(...allClasses);
+         };
+         
+         function toggleClassesOn(x,a,b,c,d) {
+           main.style.flexDirection = x ;
+           clearClasses();
+           boxA.classList.add( a );
+           boxB.classList.add( b );
+           boxC.classList.add( c ); 
+           boxD.classList.add( d ); 
+         };
+         
+         
+         document.getElementById("optionA").addEventListener("click", function() {toggleClassesOn( row , row , row , hid , hid )});
+         document.getElementById("optionB").addEventListener("click", function() {toggleClassesOn( col , col , col , hid , hid )});
+         document.getElementById("optionC").addEventListener("click", function() {toggleClassesOn( col , sqr , sqr , col , hid )});
+         document.getElementById("optionD").addEventListener("click", function() {toggleClassesOn( col , col , sqr , sqr , hid )});
+         document.getElementById("optionE").addEventListener("click", function() {toggleClassesOn( row , sqr , sqr , row , hid )});
+         document.getElementById("optionF").addEventListener("click", function() {toggleClassesOn( row , row , sqr , sqr , hid )});
+         document.getElementById("optionG").addEventListener("click", function() {toggleClassesOn( row , sqr , sqr , sqr , sqr )});
+         
+         
+         
+         
+         document.getElementById("saveImage").addEventListener("click", function() {
+             html2canvas(document.querySelector("#mainContainer")).then(canvas => {
+               downloadTheCollage(canvas.toDataURL("image/jpeg", 1.0), "collage.jpg" );
+               });
+         });
+         
+         function downloadTheCollage(uri, filename) {
+             var link = document.createElement('a');
+             if (typeof link.download === 'string') {
+                 link.href = uri;
+                 link.download = filename;
+                 document.body.appendChild(link);
+                 link.click();
+                 document.body.removeChild(link);
+                 } else {
+                   window.open(uri);
+                   }
+         };
+         
+         
+         // RESET
+         
+         
+         function clearContent(id) {
+           const reset = document.getElementById(id);
+           const orig = `<div class="pinch-zoom"><input type="file" class="` + id + `"/></div><label for="file-upload" class="custom-file-upload"></label>`;
+           reset.innerHTML = orig;           
+           };
+         
 
 document.getElementById("toggleDelete").addEventListener("click", function() {  
-var deleteUIElements = document.querySelectorAll(".deleteUI");
-for (var i = 0; i < deleteUIElements.length; i++) {
-deleteUIElements[i].style.display = deleteUIElements[i].style.display == "none" ? "block" : "none";
-}
+  var deleteUIElements = document.querySelectorAll(".deleteUI");
+  for (var i = 0; i < deleteUIElements.length; i++) {
+    deleteUIElements[i].style.height = deleteUIElements[i].style.height == "0%" ? "100%" : "0%";
+    }
 });
 
 function removeLightBox() {
-var deleteUIElements = document.querySelectorAll(".deleteUI");
-for (var i = 0; i < deleteUIElements.length; i++) {
-deleteUIElements[i].style.display = "none";
-}
+    var deleteUIElements = document.querySelectorAll(".deleteUI");
+    for (var i = 0; i < deleteUIElements.length; i++) {
+    deleteUIElements[i].style.height = "0%";
+    }
 };
 
 var xTheme = 0;
 document.getElementById("toggleTheme").addEventListener("click", function() {  
-if( xTheme == 0) {
-document.documentElement.setAttribute('data-theme', 'dark');
-xTheme = 1;
-} else {
-document.documentElement.setAttribute('data-theme', 'light');
-xTheme = 0;
-}
+  if( xTheme == 0) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    xTheme = 1;
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    xTheme = 0;
+  }
+  
 
-
-
+  
 });
 
 

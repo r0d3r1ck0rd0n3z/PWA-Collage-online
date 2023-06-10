@@ -4,7 +4,8 @@
    <title>Online collage maker</title>
    <head>
       <style>
-#mainContainer {
+
+         #mainContainer {
   display: flex;
   flex-direction: initial;
   justify-content: center;
@@ -115,8 +116,13 @@ input {
   margin-right: auto;
 }
 .selectAframe {
-  width: 100%;
-  text-align: center;
+    width: 90vw;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    flex-basis: auto;
+    flex-flow: wrap;
+    gap: 15px;
 }
 .selectAframe div {
   border: solid 3px #000;
@@ -128,12 +134,12 @@ input {
   font-weight: bold;
   display: inline-block;
   overflow: hidden;
-  margin: 13px;
   font-family: SimSun, NSimSun, "Lucida Sans Unicode", "Comics Sans MS", Candara, Calibri;
 }
 
 .selectAframe div:active {
   border: solid 3px red;
+  color: red;
 }
 
 x-button {
@@ -192,67 +198,70 @@ button,
   margin-top: -15px;
   font-size: 10px;
 }
+
+         
+         
          
       </style>
    </head>
+<!-- ============================================= BODY ============================================= -->   
    <body>
 
-     <div id="topMost">
-         <div id="mainContainer">
-            <div class="square" id="boxA">
-               <div class="pinch-zoom">  
-                  <input type="file" class="boxA"/>
-               </div>
-               <label for="file-upload" class="custom-file-upload"></label>
-            </div>
-            <div class="square" id="boxB">
-               <div class="pinch-zoom">  
-                  <input type="file" class="boxB"/>
-               </div>
-               <label for="file-upload" class="custom-file-upload"></label> 
-            </div>
-            <div class="square" id="boxC">
-               <div class="pinch-zoom">  
-                  <input type="file" class="boxC"/>
-               </div>
-               <label for="file-upload" class="custom-file-upload"></label>
-            </div>
-            <div class="square" id="boxD">
-               <div class="pinch-zoom">  
-                  <input type="file" class="boxD"/>
-               </div>
-               <label for="file-upload" class="custom-file-upload"></label>
-            </div>
-         </div>
-         <br>
-       
-       
-         <div class="bottomContainer">
-            <div class="selectAframe">
-               <div id="optionA">─</div>
-               <div id="optionB">│</div>
-               <div id="optionC">┤</div>
-               <div id="optionD">├</div>
-               <div id="optionE">┴</div>
-               <div id="optionF">┬</div>
-               <div id="optionG">┼</div>
-            </div>
+<div id="topMost">
+  <div id="mainContainer">
+    <div class="square" id="boxA">
+      <div class="pinch-zoom">  
+        <input type="file" class="boxA"/>
+      </div>
+      <label for="file-upload" class="custom-file-upload"></label>
+    </div>
+    <div class="square" id="boxB">
+      <div class="pinch-zoom">  
+        <input type="file" class="boxB"/>
+      </div>
+      <label for="file-upload" class="custom-file-upload"></label> 
+    </div>
+    <div class="square" id="boxC">
+      <div class="pinch-zoom">  
+        <input type="file" class="boxC"/>
+      </div>
+      <label for="file-upload" class="custom-file-upload"></label>
+    </div>
+    <div class="square" id="boxD">
+      <div class="pinch-zoom">  
+        <input type="file" class="boxD"/>
+      </div>
+      <label for="file-upload" class="custom-file-upload"></label>
+    </div>
+  </div>
+  <br>
 
-         </div>
 
-         <div style="width: 100%;"><center>
-           <button id="toggleDelete">Delete mode</button> &nbsp;
-                <button id="saveImage">Save image</button>          
+  <div class="bottomContainer">
+    <div class="selectAframe">
+      <div id="optionA">─</div>
+      <div id="optionB">│</div>
+      <div id="optionC">┤</div>
+      <div id="optionD">├</div>
+      <div id="optionE">┴</div>
+      <div id="optionF">┬</div>
+      <div id="optionG">┼</div>
+    </div>
+  </div>
 
-            </center>
-         </div>
-         
-         
-                   <br><br>
+  <br><br>
 
-       
-      </div>      
+  <div style="width: 100%;">
+    <center>
+      <button id="toggleDelete">Delete mode</button> &nbsp;
+      <button id="saveImage">Save image</button>
+    </center>
+  </div>
+  <br><br>
+
+</div>
       
+<!-- ============================================= SCRIPTS ============================================= -->   
       
       <script>
          function handleFileChange(event) {
@@ -359,7 +368,7 @@ button,
                  } else {
                    window.open(uri);
                    }
-         }
+         };
          
          
          // RESET
@@ -369,7 +378,13 @@ button,
            const reset = document.getElementById(id);
            const orig = `<div class="pinch-zoom"><input type="file" class="` + id + `"/></div><label for="file-upload" class="custom-file-upload"></label>`;
            reset.innerHTML = orig;
-         }
+           
+           var deleteUIElements = document.querySelectorAll(".deleteUI");
+           for (var i = 0; i < deleteUIElements.length; i++) {
+                deleteUIElements[i].style.display = deleteUIElements[i].style.display == "none";
+                }
+           
+         };
          
 
 document.getElementById("toggleDelete").addEventListener("click", function() {   console.log('aaa');
@@ -378,6 +393,7 @@ document.getElementById("toggleDelete").addEventListener("click", function() {  
     deleteUIElements[i].style.display = deleteUIElements[i].style.display == "none" ? "block" : "none";
   }
 });
+
 
 
 

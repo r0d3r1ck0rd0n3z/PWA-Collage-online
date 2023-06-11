@@ -397,6 +397,7 @@ DeleteModButton.addEventListener("click", function() {
   for (var i = 0; i < resetLightBox.length; i++) {
 		 resetLightBox[i].style.transitionDelay = "0s";	  
 		 resetLightBox[i].style.height = resetLightBox[i].style.height == "0%" ? "100%" : "0%";
+	         setTimeout(()=>{ resetLightBox[i].style.transitionDelay = "1s" }, 4000 );
 	    }
 });
 

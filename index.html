@@ -164,7 +164,7 @@ button,
   vertical-align: middle;
   will-change: height;	
   transition: height 0.5s ease-in-out;
-  transition-delay: 1s;
+  transition-delay: 0s;
   overflow: hidden;
 }
 
@@ -321,6 +321,7 @@ function handleFileChange(event) {
 	 var divTwo = `')"><b>&#x21bb;</b><br><small>Reset frame</small></div>`;
 	 delDiv.className = "deleteUI";
 	 delDiv.style["height"] = "0%";
+	 delDiv.style["transition-delay"] = "0s";  
 	 delDiv.innerHTML = divOne + parent + divTwo;
 	 boxOne.appendChild(delDiv);
 	 
@@ -410,6 +411,7 @@ function clearContent(id) {
 function removeLightBox() {
   const resetLightBox = document.querySelectorAll(".deleteUI");  
 	for (var i = 0; i < resetLightBox.length; i++) {
+		resetLightBox[i].style.transitionDelay = "1s";
 		resetLightBox[i].style.height = "0%";
 	}
 };

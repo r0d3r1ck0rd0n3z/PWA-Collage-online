@@ -396,6 +396,7 @@ DeleteModButton.addEventListener("click", function() {
   // this class does not exist yet after a fresh page load, so we have to call it here
   const resetLightBox = document.querySelectorAll(".deleteUI");                                                      
   for (var i = 0; i < resetLightBox.length; i++) {
+	         resetLightBox[i].style.transitionDelay = "1s";
 		 resetLightBox[i].style.height = resetLightBox[i].style.height == "0%" ? "100%" : "0%";
 	    }
 });
@@ -411,7 +412,6 @@ function clearContent(id) {
 function removeLightBox() {
   const resetLightBox = document.querySelectorAll(".deleteUI");  
 	for (var i = 0; i < resetLightBox.length; i++) {
-		resetLightBox[i].style.transitionDelay = "1s";
 		resetLightBox[i].style.height = "0%";
 	}
 };

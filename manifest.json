@@ -1,0 +1,10 @@
+{
+  "name": "Collage Lite",
+  "short_name": "CollageL",
+  "theme_color": "#ad00ff",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/index.html"
+}

@@ -309,20 +309,18 @@ var   xTheme = 0;
 
 // function to insert images
 function handleFileChange(event) {
-
-   // Hide any delete overlays   
-   removeLightBox();      
-   // Get the file from the event object
+    
+// Get the file from the event object
    var file = event.target.files[0];                 
  
-   // Identify all the elements to be modified 
+// Identify all the elements to be modified 
    const parent = event.target.getAttribute('class');
    const boxOne = document.querySelector("#" + parent);
    const labelB = document.querySelector("#" + parent + " .custom-file-upload");
    const inputB = document.querySelector("#" + parent + " ." + parent);
    const pinchZ = document.querySelector('#' + parent +  ' div.pinch-zoom');
   
-   // Check if the file is an image
+// Check if the file is an image
    if (file.type === "image/jpeg" || file.type === "image/png") {  
 	 var image = document.createElement("img");        // Create a new image element.
 	 image.src = window.URL.createObjectURL(file);     // Set the image's src to the file's data URL.
@@ -330,11 +328,13 @@ function handleFileChange(event) {
 	 inputB.remove();
 	 labelB.remove(); 
 	 
-	 // Add pinch to zoom feature. Query div ID again after image is successfully added,
-    // otherwise, this will return the blank 'pinchZ' div declared earlier.
+      // Add pinch to zoom feature. Query div ID again after image is successfully added,
+      // otherwise, this will return the blank 'pinchZ' div declared earlier.
 	 new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { });
 	 
-	 // Append a delete overlay to the frame
+      // Hide any delete overlays   
+         removeLightBox();    
+      // Append a new delete overlay to the frame
 	 var delDiv = document.createElement("div");
 	 var divOne = `<div class=reset onclick="clearContent('`;
 	 var divTwo = `')"><b>&#x21bb;</b><br><small>Reset frame</small></div>`;
@@ -345,7 +345,7 @@ function handleFileChange(event) {
 	 
 	 
    } else {
-	 // Show an error message.
+      // Show an error message.
 	 alert("Please select an image file.");            
    }
 }

@@ -8,6 +8,7 @@
   "orientation": "portrait",
   "scope": ".",
   "start_url": "./index.html",
+  "id": "/PWA-Collage-online/index.html",
   "icons": [
     {
       "src": "assets/icon-72x72.png",

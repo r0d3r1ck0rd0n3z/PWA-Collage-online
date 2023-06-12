@@ -1,6 +1,7 @@
 {
   "name": "Collage Lite",
   "short_name": "Collage",
+  "description": "A basic collage creator",
   "theme_color": "#ad00ff",
   "background_color": "#ffffff",
   "display": "fullscreen",

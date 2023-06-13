@@ -4,7 +4,7 @@
   "description": "A basic collage creator",
   "theme_color": "#82467B",
   "background_color": "#82467B",
-  "display": "standalone",
+  "display": "minimal-ui",
   "orientation": "portrait",
   "scope": ".",
   "start_url": "./index.html",

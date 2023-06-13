@@ -149,12 +149,14 @@ input {
   cursor: pointer;
   width: 20px;
   text-align: center;
-  line-height: 18px;
-  font-size: 20px;
+  line-height: 15px;
+  font-size: 23px;
   font-weight: bold;
-  display: inline-block;
+  display: flex;
   overflow: hidden;
-  font-family: SimSun, NSimSun, "Lucida Sans Unicode", "Comics Sans MS", Candara, Calibri;
+	height: 20px;
+	justify-content: space-evenly;
+  x-font-family: SimSun, NSimSun, "Lucida Sans Unicode", "Comics Sans MS", Candara, Calibri;
 }
 
 .selectAframe div:active {
@@ -170,7 +172,6 @@ button,
 }
 
 .deleteUI {
-  x-display: none;
   position: absolute;
   top: 0;
   background-color: #555;
@@ -210,6 +211,7 @@ button,
   border-radius: 5px;
   margin-top: -15px;
   font-size: 10px;
+	font-family: ui-rounded, sans-serif;
 }
 
 

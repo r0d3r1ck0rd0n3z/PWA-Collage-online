@@ -284,7 +284,9 @@ button,
 <!-- ============================================= SCRIPTS ============================================= -->   
       
 <script>
-navigator.serviceWorker.register('sw.js');
+if (navigator && navigator.serviceWorker) {
+  navigator.serviceWorker.register('sw.js');
+}
 
 // Enumerate all relevant IDs in our HTML	   
 const main = document.getElementById("mainContainer");

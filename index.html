@@ -227,25 +227,25 @@ button,
   <div id="mainContainer">
     <div class="square" id="boxA">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .webp, .gif, .bmp, .jfif, .heif" class="boxA"/>
+        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxA"/>
       </div>
       <label class="custom-file-upload"></label>
     </div>
     <div class="square" id="boxB">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .webp, .gif, .bmp, .jfif, .heif" class="boxB"/>
+        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxB"/>
       </div>
       <label class="custom-file-upload"></label> 
     </div>
     <div class="square" id="boxC">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .webp, .gif, .bmp, .jfif, .heif" class="boxC"/>
+        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxC"/>
       </div>
       <label class="custom-file-upload"></label>
     </div>
     <div class="square" id="boxD">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .webp, .gif, .bmp, .jfif, .heif" class="boxD"/>
+        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxD"/>
       </div>
       <label class="custom-file-upload"></label>
     </div>
@@ -429,8 +429,8 @@ function setTransitionDelay() {
 	
 function clearContent(id) {
 	const reset = document.getElementById(id);
-	const reOne = `<div class="pinch-zoom"><input type="file" class="`;
-	const reTwo = `"/></div><label for="file-upload" class="custom-file-upload"></label>`;
+	const reOne = `<div class="pinch-zoom"><input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="`;
+	const reTwo = `"/></div><label class="custom-file-upload"></label>`;
 	const orig = reOne + id + reTwo;
 	reset.innerHTML = orig;
 	setTransitionDelay();

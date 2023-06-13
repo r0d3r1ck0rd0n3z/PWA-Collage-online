@@ -6,7 +6,7 @@ self.addEventListener('install',  function (e) {
       console.log("CACHING /INDEX.HTML");
       return cache.addAll(
         [
-          '/index.html'
+          'index.html'
         ]
       );
     })

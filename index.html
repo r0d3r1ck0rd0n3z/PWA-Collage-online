@@ -22,7 +22,8 @@
 <script src="sw.js"></script>   
 <link rel="icon" type="image/x-icon" href="favicon.svg">
 <link href="https://fonts.cdnfonts.com/css/lucida-sans-unicode" rel="stylesheet">
-                
+      <!-- version with mouse wheel support -->
+      <script type="module" src="https://cdn.jsdelivr.net/gh/manuelstofer/pinchzoom@master/src/pinch-zoom.js"></script>                
 <style>
 @import url('https://fonts.cdnfonts.com/css/lucida-sans-unicode');
 :root {
@@ -280,7 +281,9 @@ button,
       <button id="saveImage">Save image</button>
     </center>
   </div>
-	<div> <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f419.svg" style="width: 10px; height:20px;text-align: center;" > </div>
+	<div style="width: 100%; text-align: center; margin-top:20px;"> 
+	<img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f419.svg" style="width: 10px; height:20px;text-align: center;"> 
+	</div>
   <br><br>
 
 </div>
@@ -472,8 +475,7 @@ LoadThemeButton.addEventListener("click", function() {
              
       </script>
       <!-- script src="https://unpkg.com/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.js"></script -->
-      <!-- version with mouse wheel support -->
-      <script type="module" src="https://cdn.jsdelivr.net/gh/manuelstofer/pinchzoom@master/src/pinch-zoom.js"></script>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
    </body>
 </html>

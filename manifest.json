@@ -7,7 +7,7 @@
   "display": "minimal-ui",
   "orientation": "portrait",
   "scope": ".",
-  "start_url": "./index.html",
+  "start_url": "./index.html?version=1",
   "id": "/PWA-Collage-online/index.html",
 "icons": [
     {

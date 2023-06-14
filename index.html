@@ -22,8 +22,7 @@
 <script src="sw.js"></script>   
 <link rel="icon" type="image/x-icon" href="favicon.svg">
 <link href="https://fonts.cdnfonts.com/css/lucida-sans-unicode" rel="stylesheet">
-      <!-- version with mouse wheel support -->
-      <script type="module" src="https://cdn.jsdelivr.net/gh/manuelstofer/pinchzoom@master/src/pinch-zoom.js"></script>                
+           
 <style>
 @import url('https://fonts.cdnfonts.com/css/lucida-sans-unicode');
 :root {
@@ -342,8 +341,7 @@ function handleFileChange(event) {
 	 
       // Add pinch to zoom feature. Query div ID again after image is successfully added,
       // otherwise, this will return the blank 'pinchZ' div declared earlier.
-      // new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
-new PinchZoom(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
+         new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
 	   
       // Hide any delete overlays   
          removeLightBox();    
@@ -474,7 +472,7 @@ LoadThemeButton.addEventListener("click", function() {
 
              
       </script>
-      <!-- script src="https://unpkg.com/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.js"></script -->
+      <script src="https://unpkg.com/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.js"></script>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
    </body>

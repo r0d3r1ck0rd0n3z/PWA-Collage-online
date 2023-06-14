@@ -126,6 +126,7 @@ input {
 .pinch-zoom-container {
   height: 100% !important;
   border: solid 1px var(--border-color);
+  will-change: content;
 }
 .bottomContainer, #buttonRow {
   display: flex;
@@ -232,27 +233,27 @@ button,
   <div id="mainContainer">
     <div class="square" id="boxA">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxA"/>
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxA" id="frameA" />
       </div>
-      <label class="custom-file-upload"></label>
+      <label class="custom-file-upload" for="frameA"></label>
     </div>
     <div class="square" id="boxB">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxB"/>
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxB" id="frameB" />
       </div>
-      <label class="custom-file-upload"></label> 
+      <label class="custom-file-upload" for="frameB"></label> 
     </div>
     <div class="square" id="boxC">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxC"/>
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxC" id="frameC" />
       </div>
-      <label class="custom-file-upload"></label>
+      <label class="custom-file-upload" for="frameC"></label>
     </div>
     <div class="square" id="boxD">
       <div class="pinch-zoom">  
-        <input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="boxD"/>
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxD" id="frameD" />
       </div>
-      <label class="custom-file-upload"></label>
+      <label class="custom-file-upload" for="frameD"></label>
     </div>
   </div>
   <br>

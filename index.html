@@ -280,6 +280,7 @@ button,
       <button id="saveImage">Save image</button>
     </center>
   </div>
+	<div> <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f419.svg" style="width: 10px; height:20px;text-align: center;" > </div>
   <br><br>
 
 </div>
@@ -339,7 +340,7 @@ function handleFileChange(event) {
       // Add pinch to zoom feature. Query div ID again after image is successfully added,
       // otherwise, this will return the blank 'pinchZ' div declared earlier.
       // new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
-new window.PinchZoom(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
+new PinchZoom(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
 	   
       // Hide any delete overlays   
          removeLightBox();    

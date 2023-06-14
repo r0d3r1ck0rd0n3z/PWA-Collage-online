@@ -281,7 +281,7 @@ button,
     </center>
   </div>
 	<div style="width: 100%; text-align: center; margin-top:20px;"> 
-	<img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f419.svg" style="width: 30px; height: 30px; text-align: center;"> 
+	<img src="favicon.svg" style="width: 20px; height: 20px; text-align: center;"> 
 	</div>
   <br><br>
 
@@ -440,7 +440,7 @@ function setTransitionDelay() {
 	
 function clearContent(id) {
 	const reset = document.getElementById(id);
-	const reOne = `<div class="pinch-zoom"><input type="file" accept=".png, .jpg, .jpeg, .jfif, .heif" class="`;
+	const reOne = `<div class="pinch-zoom"><input type="file" accept=".png, .jpg, .jpeg" class="`;
 	const reTwo = `"/></div><label class="custom-file-upload"></label>`;
 	const orig = reOne + id + reTwo;
 	reset.innerHTML = orig;
@@ -473,7 +473,6 @@ LoadThemeButton.addEventListener("click", function() {
              
       </script>
       <script src="https://unpkg.com/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.js"></script>
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
    </body>
 </html>

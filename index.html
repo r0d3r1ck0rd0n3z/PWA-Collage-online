@@ -140,12 +140,12 @@ input {
   margin-right: auto;
 }
 .selectAframe, #buttonRow center {
-    width: 90vw;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    flex-basis: auto;
-    flex-flow: nowrap;
+  width: 90vw;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  flex-basis: auto;
+  flex-flow: nowrap;
 }
 .selectAframe div {
   border: solid 3px var(--border-color);
@@ -158,16 +158,10 @@ input {
   font-weight: bold;
   display: flex;
   overflow: hidden;
-	height: 20px;
-	justify-content: space-evenly;
+  height: 20px;
+  justify-content: space-evenly;
   font-family: 'Lucida Sans Unicode', sans-serif;
-}
-
-.selectAframe div:active, button:active {
-  border: solid 3px #82467B;
-  color: #82467B;
-  -webkit-tap-highlight-color: rgba(130, 70, 123, 0.50);
-}
+}	
 button,
 #saveImage {
   border: solid 2px #eee;
@@ -176,7 +170,13 @@ button,
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(130, 70, 123, 0.50);
 }
-
+.selectAframe div:active, button:active {
+  color: #82467B;
+  -webkit-tap-highlight-color: rgba(130, 70, 123, 0.50);
+}
+.selectAframe div:active {
+  border: solid 3px #82467B;
+}
 .deleteUI {
   position: absolute;
   top: 0;

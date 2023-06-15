@@ -343,7 +343,7 @@ function handleFileChange(event) {
 	 
       // Add pinch to zoom feature. Query div ID again after image is successfully added,
       // otherwise, this will return the blank 'pinchZ' div declared earlier.
-         new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20, maxZoom: 10, zoomOutFactor: 10, setOffsetsOnce: false });
+         new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20, maxZoom: 10, minZoom: 0.1 });
 	   
       // Hide any delete overlays   
          removeLightBox();    

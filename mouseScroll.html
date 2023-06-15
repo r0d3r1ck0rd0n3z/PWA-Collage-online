@@ -1,0 +1,480 @@
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=100vw,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="description" content="A basic collage creator">
+<meta name="keywords" content="collage PWA">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Collage Lite">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="full-screen" content="yes">
+<meta name="browsermode" content="application">
+<meta name="nightmode" content="enable/disable">
+<meta name="imagemode" content="force">
+<meta name="screen-orientation" content="portrait">
+<meta name="theme-color" content="#82467B">
+<head>
+   
+	
+<title>Collage Lite</title>
+<link href="manifest.json" rel="manifest">	 
+<script src="sw.js"></script>   
+<link rel="icon" type="image/x-icon" href="favicon.svg">
+<link href="https://fonts.cdnfonts.com/css/lucida-sans-unicode" rel="stylesheet">
+<script src="pz/pinch-zoom.umd.js"></script>
+
+  
+<style>
+@import url('https://fonts.cdnfonts.com/css/lucida-sans-unicode');
+:root {
+    --border-color: #000;
+    --bg-color: #fff;
+}
+
+[data-theme="dark"] {
+    --border-color: #fff;
+    --bg-color: #000;
+}
+
+body, #topmost { background-color: var(--bg-color); }
+
+#mainContainer {
+  display: flex;
+  flex-direction: initial;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: solid 5px var(--border-color);
+  width: 90vw;
+  height: 90vw;
+  max-width: 90vh;
+  max-height: 90vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  background-color: var(--border-color);
+}
+#boxA,
+#boxB,
+#boxC,
+#boxD {
+  border: solid 5px var(--border-color);
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #eee;
+  float: left;
+  position: relative;
+}
+.square {
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+}
+.column {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+}
+.row {
+  display: inline-block;
+  width: 100%;
+  height: 50%;
+}
+.hiddenBox {
+  display: none;
+  width: 0%;
+  height: 0%;
+}
+input {
+  width: 120px;
+  height: 55px;
+  border: none 1px red;
+  cursor: pointer;
+  -webkit-transform: translateY(140%);
+}
+.custom-file-upload {
+  display: inline-block;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 6px 12px;
+  padding-top: 20px;
+  height: 50px;
+  width: 100px;
+  cursor: pointer;
+  pointer-events: none;
+  position: relative;
+  z-index: 99;
+  background-size: 20px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: 45px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" viewBox="0 0 1024 1024"%3E%3Cpath fill="currentColor" d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h360c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H184V184h656v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V144c0-17.7-14.3-32-32-32zM653.3 599.4l52.2-52.2a8.01 8.01 0 0 0-4.7-13.6l-179.4-21c-5.1-.6-9.5 3.7-8.9 8.9l21 179.4c.8 6.6 8.9 9.4 13.6 4.7l52.4-52.4l256.2 256.2c3.1 3.1 8.2 3.1 11.3 0l42.4-42.4c3.1-3.1 3.1-8.2 0-11.3L653.3 599.4z"%2F%3E%3C%2Fsvg%3E');
+}
+#boxA .custom-file-upload::after { content: "Add image A here"; }
+#boxB .custom-file-upload::after { content: "Add image B here"; }
+#boxC .custom-file-upload::after { content: "Add image C here"; }
+#boxD .custom-file-upload::after { content: "Add image D here"; }
+.custom-file-upload::after {
+  font-size: xx-small;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  display: block;
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  width: 99px;
+}
+.pinch-zoom-container {
+  height: 100% !important;
+  border: solid 1px var(--border-color);
+  will-change: content;
+}
+.bottomContainer, #buttonRow {
+  display: flex;
+  flex-direction: initial;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: nowrap;
+  width: 90%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.selectAframe, #buttonRow center {
+  width: 90vw;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  flex-basis: auto;
+  flex-flow: nowrap;
+}
+.selectAframe div {
+  border: solid 3px var(--border-color);
+  color: var(--border-color);
+  cursor: pointer;
+  width: 20px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 23px;
+  font-weight: bold;
+  display: flex;
+  overflow: hidden;
+  height: 20px;
+  justify-content: space-evenly;
+  font-family: 'Lucida Sans Unicode', sans-serif;
+}	
+button,
+#saveImage {
+  border: solid 2px #eee;
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(130, 70, 123, 0.50);
+}
+.selectAframe div:active, button:active {
+  color: #82467B;
+  -webkit-tap-highlight-color: rgba(130, 70, 123, 0.50);
+}
+.selectAframe div:active {
+  border: solid 3px #82467B;
+}
+.deleteUI {
+  position: absolute;
+  top: 0;
+  background-color: #555;
+  width: 100%;
+  height: 0%;
+  opacity: 0.5;
+  text-align: center;
+  vertical-align: middle;
+  will-change: height;	
+  transition: height 0.5s ease-in-out;
+  transition-delay: 0s;
+  overflow: hidden;
+}
+
+.reset {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.reset b {
+  background-color: #fff;
+  padding: 10px;
+  display: inline-block;
+  width: 20%;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.reset small {
+  background-color: #fff;
+  padding: 10px;
+  display: inline-block;
+  width: 20%;
+  border-radius: 5px;
+  margin-top: -15px;
+  font-size: 10px;
+	font-family: ui-rounded, sans-serif;
+}
+
+
+         
+         
+         
+      </style>
+   </head>
+<!-- ============================================= BODY ============================================= -->   
+   <body>
+
+<div id="topMost">
+  <div id="mainContainer">
+    <div class="square" id="boxA">
+      <div class="pinch-zoom">  
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxA" id="frameA" />
+      </div>
+      <label class="custom-file-upload" for="frameA"></label>
+    </div>
+    <div class="square" id="boxB">
+      <div class="pinch-zoom">  
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxB" id="frameB" />
+      </div>
+      <label class="custom-file-upload" for="frameB"></label> 
+    </div>
+    <div class="square" id="boxC">
+      <div class="pinch-zoom">  
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxC" id="frameC" />
+      </div>
+      <label class="custom-file-upload" for="frameC"></label>
+    </div>
+    <div class="square" id="boxD">
+      <div class="pinch-zoom">  
+        <input type="file" accept=".png, .jpg, .jpeg" class="boxD" id="frameD" />
+      </div>
+      <label class="custom-file-upload" for="frameD"></label>
+    </div>
+  </div>
+  <br>
+
+
+  <div class="bottomContainer">
+    <div class="selectAframe">
+      <div id="optionA">─</div>
+      <div id="optionB">│</div>
+      <div id="optionC">┤</div>
+      <div id="optionD">├</div>
+      <div id="optionE">┴</div>
+      <div id="optionF">┬</div>
+      <div id="optionG">┼</div>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div id="buttonRow" style="width: 100%;">
+    <center>
+      <button id="toggleTheme">Switch theme</button> &nbsp;
+      <button id="toggleDelete">Delete mode</button> &nbsp;
+      <button id="saveImage">Save image</button>
+    </center>
+  </div>
+	<div style="width: 100%; text-align: center; margin-top:20px;"> 
+	<img src="favicon.svg" style="width: 20px; height: 20px; text-align: center;"> 
+	</div>
+  <br><br>
+
+</div>
+      
+<!-- ============================================= SCRIPTS ============================================= -->   
+      
+<script>
+if (navigator && navigator.serviceWorker) {
+  navigator.serviceWorker.register('sw.js');
+}
+
+// Enumerate all relevant IDs in our HTML	   
+const main = document.getElementById("mainContainer");
+const boxA = document.getElementById("boxA");
+const boxB = document.getElementById("boxB");
+const boxC = document.getElementById("boxC");
+const boxD = document.getElementById("boxD");
+
+const sqr = "square", col = "column", row = "row", hid = "hiddenBox";
+const allClasses = [sqr, col, row, hid];  
+
+const layoutA = document.getElementById("optionA");
+const layoutB = document.getElementById("optionB");
+const layoutC = document.getElementById("optionC");
+const layoutD = document.getElementById("optionD");
+const layoutE = document.getElementById("optionE");
+const layoutF = document.getElementById("optionF");
+const layoutG = document.getElementById("optionG");
+
+const SaveImageButton = document.getElementById("saveImage");
+const DeleteModButton = document.getElementById("toggleDelete");
+const LoadThemeButton = document.getElementById("toggleTheme");
+var   xTheme = 0;
+		   
+
+// function to insert images
+function handleFileChange(event) {
+    
+// Get the file from the event object
+   var file = event.target.files[0];                 
+ 
+// Identify all the elements to be modified 
+   const parent = event.target.getAttribute('class');
+   const boxOne = document.querySelector("#" + parent);
+   const labelB = document.querySelector("#" + parent + " .custom-file-upload");
+   const inputB = document.querySelector("#" + parent + " ." + parent);
+   const pinchZ = document.querySelector('#' + parent +  ' div.pinch-zoom');
+  
+// Check if the file is an image
+   if (file.type === "image/jpeg" || file.type === "image/png") {  
+	 var image = document.createElement("img");        // Create a new image element.
+	 image.src = window.URL.createObjectURL(file);     // Set the image's src to the file's data URL.
+	 pinchZ.appendChild(image);                        // Append the image to the document body.
+	 inputB.remove();
+	 labelB.remove(); 
+	 
+      // Add pinch to zoom feature. Query div ID again after image is successfully added,
+      // otherwise, this will return the blank 'pinchZ' div declared earlier.
+         new window.PinchZoom.default(document.querySelector('#' + parent +  ' div.pinch-zoom'), { useMouseWheel: true, verticalPadding: 20, horizontalPadding: 20 });
+	   
+      // Hide any delete overlays   
+         removeLightBox();    
+      // Append a new delete overlay to the frame
+	 var delDiv = document.createElement("div");
+	 var divOne = `<div class=reset onclick="clearContent('`;
+	 var divTwo = `')"><b>&#x21bb;</b><br><small>Reset frame</small></div>`;
+	 delDiv.className = "deleteUI";
+	 delDiv.style["height"] = "0%";
+	 delDiv.innerHTML = divOne + parent + divTwo;
+	 boxOne.appendChild(delDiv);
+	 
+	 
+   } else {
+      // Show an error message.
+	 alert("Please select an image file.");            
+   }
+}
+
+
+// monitor mainContainer if user clicks a button
+document.addEventListener('change', (e) => {
+  if (e.target.tagName === 'INPUT') {
+	  handleFileChange(e);
+	  }
+});
+         
+         
+// remove all classes from frames
+ function clearClasses() {
+   boxA.classList.remove(...allClasses);
+   boxB.classList.remove(...allClasses);
+   boxC.classList.remove(...allClasses);
+   boxD.classList.remove(...allClasses);
+ };
+
+// change frame layout inside the mainContainer 
+ function toggleClassesOn(x,a,b,c,d) {
+   main.style.flexDirection = x ;
+   clearClasses();
+   boxA.classList.add( a );
+   boxB.classList.add( b );
+   boxC.classList.add( c ); 
+   boxD.classList.add( d ); 
+ };
+ 
+ // define how each layout should display frames
+ layoutA.addEventListener("click", function() {toggleClassesOn( row , row , row , hid , hid )});
+ layoutB.addEventListener("click", function() {toggleClassesOn( col , col , col , hid , hid )});
+ layoutC.addEventListener("click", function() {toggleClassesOn( col , sqr , sqr , col , hid )});
+ layoutD.addEventListener("click", function() {toggleClassesOn( col , col , sqr , sqr , hid )});
+ layoutE.addEventListener("click", function() {toggleClassesOn( row , sqr , sqr , row , hid )});
+ layoutF.addEventListener("click", function() {toggleClassesOn( row , row , sqr , sqr , hid )});
+ layoutG.addEventListener("click", function() {toggleClassesOn( row , sqr , sqr , sqr , sqr )});
+         
+         
+         
+// for saving/downloading the user-created collage
+ SaveImageButton.addEventListener("click", function() {
+	 html2canvas(main).then(canvas => {
+	   const uri = canvas.toDataURL("image/jpeg", 1.0);
+	   var link = document.createElement("a");
+	   if (typeof link.download === "string") {
+		   link.href = uri;
+		   link.download = "collage.jpg";
+		   document.body.appendChild(link);
+		   link.click();
+		   document.body.removeChild(link);
+		   } else {
+			 window.open(uri);
+			 }
+	   });
+ });
+ 
+ 
+ 
+
+// for clearing images inside frames
+DeleteModButton.addEventListener("click", function() {
+  // can't put the resetLightBox var above because this class is only added when user inserts an image
+  // this class does not exist yet after a fresh page load, so we have to call it here
+  const resetLightBox = document.querySelectorAll(".deleteUI");                                                      
+  for (var i = 0; i < resetLightBox.length; i++) {
+       resetLightBox[i].style.transitionDelay = "0s";	  
+       resetLightBox[i].style.height = resetLightBox[i].style.height == "0%" ? "100%" : "0%";
+       setTimeout(()=>{ setTransitionDelay() }, 4000 );
+       }
+});
+
+function setTransitionDelay() {
+  const resetLightBox = document.querySelectorAll(".deleteUI");                                                      
+  for (var i = 0; i < resetLightBox.length; i++) {
+       resetLightBox[i].style.transitionDelay = "1s";	  
+       }	
+};
+	
+function clearContent(id) {
+	const reset = document.getElementById(id);
+	const reOne = `<div class="pinch-zoom"><input type="file" accept=".png, .jpg, .jpeg" class="`;
+	const reTwo = `"/></div><label class="custom-file-upload"></label>`;
+	const orig = reOne + id + reTwo;
+	reset.innerHTML = orig;
+	setTransitionDelay();
+};
+
+function removeLightBox() {
+  const resetLightBox = document.querySelectorAll(".deleteUI");  
+	for (var i = 0; i < resetLightBox.length; i++) {
+		resetLightBox[i].style.height = "0%";
+	}
+};
+
+
+
+// for switching themes
+LoadThemeButton.addEventListener("click", function() {
+	if (xTheme == 0) {
+		document.documentElement.setAttribute('data-theme', 'dark');
+		xTheme = 1;
+	} else {
+		document.documentElement.setAttribute('data-theme', 'light');
+		xTheme = 0;
+    }
+	});
+   
+   
+
+
+             
+      </script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+   </body>
+</html>

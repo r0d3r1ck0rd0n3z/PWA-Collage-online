@@ -21,11 +21,22 @@
 <link href="manifest.json" rel="manifest">	 
 <script src="sw.js"></script>   
 <link rel="icon" type="image/x-icon" href="favicon.svg">
-<link href="https://fonts.cdnfonts.com/css/lucida-sans-unicode" rel="stylesheet">
            
 <style>
-@import url('https://fonts.cdnfonts.com/css/lucida-sans-unicode');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@font-face {
+  font-family:lucida sans unicode;
+  font-style:normal;
+  font-weight:400;
+  src: local('Lucida Sans Unicode'), url('fonts/l_10646.woff') format('woff')
+}
+/* lobster-regular - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/lobster-v28-latin-regular.woff2') format('woff2'); 
+}
 :root {
     --border-color: #000;
     --bg-color: #fff;

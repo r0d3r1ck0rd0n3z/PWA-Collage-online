@@ -269,6 +269,7 @@ button,
 }
 #guide ol li {
   counter-increment: steps;
+  line-height: 25px;
 }
 #guide ol li::before {
   content: counter(steps);
@@ -281,7 +282,12 @@ button,
   display: inline-grid;
   place-items: center;
   line-height: 1.2em;
-}	
+}
+.Xbutton {
+text-decoration: none;
+color: #fff;
+font-size: xxx-large;
+}
          
       </style>
    </head>
@@ -351,7 +357,7 @@ button,
 <br/><br/>
 
 <div id="guide">
-<a href="#banner">&times;</a><br/><br/>
+<a href="#banner" class="Xbutton">&times;</a><br/><br/>
  <p> Quick Guide
 </p>
   <ol><li>  Select frame type

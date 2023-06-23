@@ -423,21 +423,20 @@ document.addEventListener('change', (e) => {
          
          
 // for saving/downloading the user-created collage
- SaveImageButton.addEventListener("click", function() {
-	 html2canvas(main).then(canvas => {
-	   const uri = canvas.toDataURL("image/jpeg", 1.0);
-	   var link = document.createElement("a");
-	   if (typeof link.download === "string") {
-		   link.href = uri;
-		   link.download = "collage.jpg";
-		   document.body.appendChild(link);
-		   link.click();
-		   document.body.removeChild(link);
-		   } else {
-			 window.open(uri);
-			 }
-	   });
- });
+SaveImageButton.addEventListener("click", function() {
+  html2canvas(main).then(canvas => {
+   const uri = canvas.toDataURL("image/jpeg", 1.0);
+   var link = document.createElement("a");
+   if (typeof link.download === "string") {
+     let dd = new Date().toISOString().slice(0, 19).replace(/[-:T]/g,'');
+     link.href = uri;
+     link.download = "collage_" + dd + ".jpg";
+     document.body.appendChild(link);
+     link.click();
+     document.body.removeChild(link);
+     } else { window.open(uri); }
+   });
+});
  
  
  

@@ -263,6 +263,25 @@ button,
 #guide button {
     font-size: xx-small;
 } 
+#guide ol {
+  list-style: none;
+  counter-reset: steps;
+}
+#guide ol li {
+  counter-increment: steps;
+}
+#guide ol li::before {
+  content: counter(steps);
+  margin-right: 0.5rem;
+  background: #ff6f00;
+  color: white;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1.2em;
+}	
          
       </style>
    </head>
@@ -332,14 +351,14 @@ button,
 <br/><br/>
 
 <div id="guide">
-<a href="#banner">&mult;</a><br/><br/>
+<a href="#banner">&times;</a><br/><br/>
  <p> Quick Guide
 </p>
-  <ul><li>  // Select frame type
- </li><li>  // Click to add pictures
- </li><li>  // Use gestures to zoom
- </li><li>  // Save to device
-</li></ul>
+  <ol><li>  Select frame type
+ </li><li>  Click to add pictures
+ </li><li>  Use gestures to zoom
+ </li><li>  Save to device
+</li></ol>
 
  <p> Limitations
 </p> 

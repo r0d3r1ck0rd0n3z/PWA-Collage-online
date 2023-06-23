@@ -309,7 +309,42 @@ button,
   <br><br>
 
 </div>
-      
+
+
+
+<br/><br/>
+
+<div id="guide">
+
+ <p> Quick Guide
+</p>
+  <ul><li> Select frame type
+ </li><li> Click to add pictures
+ </li><li> Use gestures to zoom
+ </li><li> Save to device
+</li></ul>
+
+ <p> Limitations
+</p> 
+  <ul><li> Less than 500 kb, but large images may fill up the cache
+ </li><li> Accepts only jpg and png formats
+ </li><li> All sessions temporary, no save state
+ </li><li> Saves to local only; nothing leaves your device
+</li></ul>
+
+<br/>
+
+
+
+  <div id="buttonRowTwo" style="width: 100%;">
+    <center>
+		<button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button>
+		<button id="checkPWA" onclick="window.open('chrome://webapks');">Check PWA stats</button>
+		<button id="install">Install to device</button>
+    </center>
+  </div>
+
+</div>
 <!-- ============================================= SCRIPTS ============================================= -->   
       
 <script>
@@ -488,8 +523,14 @@ LoadThemeButton.addEventListener("click", function() {
 		xTheme = 0;
     }
 	});
-   
-   
+
+// for installing the app
+let installPrompt = null;
+window.addEventListener("beforeinstallprompt", (event) => {
+  const installButton = document.querySelector("#install");
+  event.preventDefault();
+  installPrompt = event;
+});   
 
 
              

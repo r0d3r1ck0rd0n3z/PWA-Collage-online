@@ -48,7 +48,11 @@
     --border-color: #fff;
     --bg-color: #000;
 }
-
+body { 
+ scroll-snap-type: y mandatory;
+ scroll-behavior: smooth;
+}
+	
 body, #topmost { background-color: var(--bg-color); }
 
 #mainContainer {
@@ -252,6 +256,7 @@ button,
     margin: 0px;
     padding-bottom: 20px;
     border-radius: 10px;
+    scroll-snap-align: start;
 }   
 #guide p {
     font-family: lobster, fantasy, match, cursive;
@@ -314,7 +319,7 @@ button,
     </center>
   </div>
 	<div style="width: 100%; text-align: center; margin-top:20px;"> 
-	<img src="favicon.svg" style="width: 20px; height: 20px; text-align: center;" alt="collage icon"> 
+	<a href="#guide"><img src="favicon.svg" style="width: 20px; height: 20px; text-align: center;" alt="collage icon"></a>
 	</div>
   <br><br>
 

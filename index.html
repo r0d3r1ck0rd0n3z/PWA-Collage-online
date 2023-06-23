@@ -51,6 +51,7 @@
 body { 
  scroll-snap-type: y mandatory;
  scroll-behavior: smooth;
+ --scroll-behavior: smooth;
 }
 	
 body, #topmost { background-color: var(--bg-color); }
@@ -236,26 +237,23 @@ button,
   border-radius: 5px;
   margin-top: -15px;
   font-size: 10px;
-	font-family: ui-rounded, sans-serif;
+  font-family: ui-rounded, sans-serif;
 }
-#banner {
+
+#banner, #guide {
     font-family: lobster, fantasy, match, cursive;
     width: 100%;
     background-color: #82467B;
     color: white;
     padding: 10px 0px 10px 30px;
     font-size: xx-large;
-    margin: -10px 0px 10px -10px;	
+    margin: -10px 0px 10px -10px;
+    scroll-snap-align: start;
 }
 
 #guide {
-    width: 100%;
-    background-color: #82467b;
-    color: #fff;
+    height: 100vh;
     font-size: small;
-    margin: 0px;
-    padding-bottom: 20px;
-    border-radius: 10px;
     scroll-snap-align: start;
 }   
 #guide p {

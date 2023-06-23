@@ -142,7 +142,7 @@ input {
   border: solid 1px var(--border-color);
   will-change: content;
 }
-.bottomContainer, #buttonRow {
+.bottomContainer, #buttonRow, #buttonRowTwo {
   display: flex;
   flex-direction: initial;
   justify-content: center;
@@ -527,7 +527,6 @@ LoadThemeButton.addEventListener("click", function() {
 // for installing the app
 let installPrompt = null;
 window.addEventListener("beforeinstallprompt", (event) => {
-  const installButton = document.querySelector("#install");
   event.preventDefault();
   installPrompt = event;
 });   

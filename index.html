@@ -48,10 +48,12 @@
     --border-color: #fff;
     --bg-color: #000;
 }
-body { 
- scroll-snap-type: both mandatory;
+html {
  scroll-behavior: smooth;
  --scroll-behavior: smooth;
+}
+body { 
+ scroll-snap-type: both mandatory;
 }
 	
 body, #topmost { background-color: var(--bg-color); }
@@ -267,9 +269,11 @@ button,
   list-style: none;
   counter-reset: steps;
 }
+#guide li {
+  line-height: 25px;
+}	
 #guide ol li {
   counter-increment: steps;
-  line-height: 25px;
 }
 #guide ol li::before {
   content: counter(steps);
@@ -287,6 +291,9 @@ button,
 text-decoration: none;
 color: #fff;
 font-size: xxx-large;
+text-align: right;
+display: inline-block;
+width: 100%;
 }
          
       </style>

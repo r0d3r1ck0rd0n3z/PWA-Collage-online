@@ -252,7 +252,7 @@ button,
     margin: -10px 0px 10px -10px;
     scroll-snap-align: start;
 }
-
+#firstHalf { height: 100vh; }
 #guide {
     height: 100vh;
     font-size: small;
@@ -271,6 +271,7 @@ button,
 }
 #guide li {
   line-height: 25px;
+  width: 90%;
 }	
 #guide ol li {
   counter-increment: steps;
@@ -293,13 +294,18 @@ color: #fff;
 font-size: xxx-large;
 text-align: right;
 display: inline-block;
-width: 95%;
+width: 99%;
+padding-right: 10px;
+-webkit-tap-highlight-color: transparent;
 }
+.Xbutton:active { color: #ddd; }
          
       </style>
    </head>
 <!-- ============================================= BODY ============================================= -->   
    <body>
+<div id="firstHalf">
+	
 <div id="banner"><span id="title">Collage Lite</span></div>
 <div id="topMost">
   <div id="mainContainer">
@@ -363,6 +369,7 @@ width: 95%;
 
 <br/><br/>
 
+</div>
 <div id="guide">
 <a href="#banner" class="Xbutton">&times;&nbsp;&nbsp;</a><br/><br/>
  <p> Quick Guide

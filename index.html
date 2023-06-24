@@ -300,7 +300,20 @@ width: 99%;
 padding-right: 10px;
 -webkit-tap-highlight-color: transparent;
 }
-#Xbutton:active { color: #ff6f00; }
+#Xbutton:active { 
+color: #ff6f00; 
+}
+#footer {
+text-align: left;
+position: fixed;
+bottom: 0;
+left:0;
+width:  100%;
+height:  4px;
+margin:  0px;
+padding: 0px;
+background-color: #82467B;
+}
          
       </style>
    </head>
@@ -364,14 +377,12 @@ padding-right: 10px;
 	<a href="#guide"><img src="favicon.svg" style="width: 20px; height: 20px; text-align: center;" alt="collage icon" id="collageIcon"></a>
 	</div>
   <br><br>
-
 </div>
-
-
-
 <br/><br/>
-
 </div>
+
+
+
 <div id="guide" style="height: 5px;">
 <a href="#banner" id="Xbutton">&times;&nbsp;&nbsp;</a><br/><br/>
  <p> Quick Guide
@@ -389,20 +400,21 @@ padding-right: 10px;
  </li><li> All sessions temporary, no save state
  </li><li> Saves to local only; nothing leaves your device
 </li></ul>
-
 <br/>
 
 
 
-  <div id="buttonRowTwo" style="width: 100%;">
+<div id="buttonRowTwo" style="width: 100%;">
     <center>
-		<button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> &nbsp; 
-		<button id="checkPWA" onclick="webapks();">Check PWA stats</button> &nbsp; 
-		<button id="install">Install to device</button>
+	<button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> &nbsp; 
+	<button id="checkPWA" onclick="webapks();">Check PWA stats</button> &nbsp; 
+	<button id="install">Install to device</button>
     </center>
   </div>
 
 </div>
+
+<div id="footer"> &nbsp; </div>
 <!-- ============================================= SCRIPTS ============================================= -->   
       
 <script>

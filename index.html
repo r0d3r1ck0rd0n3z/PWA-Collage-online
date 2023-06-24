@@ -371,7 +371,7 @@ padding-right: 10px;
 <br/><br/>
 
 </div>
-<div id="guide" style="height: 10px;">
+<div id="guide" style="height: 5px;">
 <a href="#banner" id="Xbutton">&times;&nbsp;&nbsp;</a><br/><br/>
  <p> Quick Guide
 </p>
@@ -587,7 +587,6 @@ LoadThemeButton.addEventListener("click", function() {
 // for installing the app
 let installPrompt = null;
 const installButton = document.querySelector("#install");
-
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   installPrompt = event;
@@ -595,27 +594,27 @@ window.addEventListener("beforeinstallprompt", (event) => {
 installButton.addEventListener("click", async () => {
   if (!installPrompt) {
     return;
-  }
+    }
   const result = await installPrompt.prompt();
   console.log(`Install prompt was: ${result.outcome}`);
   installPrompt = null;
-});
+  });
 
 function webapks() {
-window.open('chrome://webapks', null, 'width=600,height=400');
-};
+	window.open('chrome://webapks', null, 'width=600,height=400');
+	};
 
 collageIcon.addEventListener("click", function() {
 	event.preventDefault();
-	document.getElementById('guide').style.height = '100vh'
+	document.getElementById('guide').style.height = '100vh';
 	location.hash = '#guide';
-});
+	});
 
 Xbutton.addEventListener("click", function() {
-	event.preventDefault();
-	document.getElementById('guide').style.height = '10px'
+	event.preventDefault();	
 	location.hash = '#banner';
-});
+	setTimeout( ()=>{ document.getElementById('guide').style.height = '10px' }, 500 );
+	});
              
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha256-6H5VB5QyLldKH9oMFUmjxw2uWpPZETQXpCkBaDjquMs=" crossorigin="anonymous"></script>

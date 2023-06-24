@@ -255,6 +255,7 @@ button,
 #firstHalf { height: 100vh; }
 #guide {
     height: 100vh;
+    overflow: hidden;
     font-size: small;
     font-family: Roboto, sans-serif;
     padding: 10px 0px 10px 20px;
@@ -288,7 +289,7 @@ button,
   place-items: center;
   line-height: 1.2em;
 }
-.Xbutton {
+#Xbutton {
 text-decoration: none;
 color: #fff;
 font-size: xxx-large;
@@ -298,7 +299,7 @@ width: 99%;
 padding-right: 10px;
 -webkit-tap-highlight-color: transparent;
 }
-.Xbutton:active { color: #ff6f00; }
+#Xbutton:active { color: #ff6f00; }
          
       </style>
    </head>
@@ -370,8 +371,8 @@ padding-right: 10px;
 <br/><br/>
 
 </div>
-<div id="guide">
-<a href="#banner" class="Xbutton">&times;&nbsp;&nbsp;</a><br/><br/>
+<div id="guide" style="height: 10px;">
+<a href="#banner" id="Xbutton">&times;&nbsp;&nbsp;</a><br/><br/>
  <p> Quick Guide
 </p>
   <ol><li>  Select frame type
@@ -430,8 +431,11 @@ const SaveImageButton = document.getElementById("saveImage");
 const DeleteModButton = document.getElementById("toggleDelete");
 const LoadThemeButton = document.getElementById("toggleTheme");
 var   xTheme = 0;
-		   
+const Xbutton = document.getElementById("Xbutton");
+const collageIcon = document.getElementById("collageIcon");
 
+	
+	
 // function to insert images
 function handleFileChange(event) {
     
@@ -600,7 +604,18 @@ installButton.addEventListener("click", async () => {
 function webapks() {
 window.open('chrome://webapks', null, 'width=600,height=400');
 };
-	
+
+collageIcon.addEventListener("click", function() {
+	event.preventDefault();
+	document.getElementById('guide').style.height = '100vh'
+	location.hash = '#guide';
+});
+
+Xbutton.addEventListener("click", function() {
+	event.preventDefault();
+	document.getElementById('guide').style.height = '10px'
+	location.hash = '#banner';
+});
              
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha256-6H5VB5QyLldKH9oMFUmjxw2uWpPZETQXpCkBaDjquMs=" crossorigin="anonymous"></script>

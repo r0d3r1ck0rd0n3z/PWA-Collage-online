@@ -451,6 +451,7 @@ const LoadThemeButton = document.getElementById("toggleTheme");
 var   xTheme = 0;
 const Xbutton = document.getElementById("Xbutton");
 const collageIcon = document.getElementById("collageIcon");
+const bottomDiv = document.getElementById("guide");
 
 	
 	
@@ -620,14 +621,15 @@ installButton.addEventListener("click", async () => {
 
 collageIcon.addEventListener("click", function() {
 	event.preventDefault();
-	document.getElementById('guide').style.height = '100vh';
+	if(bottomDiv.style.height == '100vh') { location.hash = '#guide' };
+	bottomDiv.style.height = '100vh';
 	location.hash = '#guide';
 	});
 
 Xbutton.addEventListener("click", function() {
 	event.preventDefault();	
 	location.hash = '#banner';
-	setTimeout( ()=>{ document.getElementById('guide').style.height = '5px' }, 500 );
+	setTimeout( ()=>{ bottomDiv.style.height = '5px' }, 500 );
 	});
 	
 function webapks() {

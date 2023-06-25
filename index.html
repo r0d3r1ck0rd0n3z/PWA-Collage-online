@@ -621,7 +621,7 @@ installButton.addEventListener("click", async () => {
 
 collageIcon.addEventListener("click", function() {
 	event.preventDefault();
-	if(bottomDiv.style.height === '100vh') { location.hash = '#guide'; console.log('icon') };
+	if(bottomDiv.style.height === '100vh') { location.href = '#guide' };
 	bottomDiv.style.height = '100vh';
 	location.hash = '#guide';
 	});

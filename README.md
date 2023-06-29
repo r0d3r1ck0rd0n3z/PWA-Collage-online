@@ -24,7 +24,7 @@ However, bugs:
 
 <br>
 
-## Dependencies
+## Backend
 
 
 ### PinchZoom.js 
@@ -34,3 +34,14 @@ PinchZoom is a Javascript library providing multi-touch gestures for zooming and
 ### html2canvas
 https://github.com/niklasvh/html2canvas <br>
 Renders current page as a canvas image, by reading the DOM and the different styles applied to the elements.
+
+<br>
+
+## Lessons / Improvements(?)
+
+* If installed, takes about less than 500kb. Maybe smaller if webfont was removed, since it's the biggest file. However, some Android phones only have the Roboto font so had to resort to Google fonts.
+* Had to copy the JS files to the repository since fetching them from the CDN uses an opaque request, which balloons their file sizes to an unpredictable number.
+* Created this since I find myself creating collages every week or so. All of the collage apps on the gPlay store took up MB of space, and my phone has very limited internal storage.
+
+<br>
+<br>

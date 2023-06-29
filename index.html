@@ -576,9 +576,11 @@ function setTransitionDelay() {
 	
 function clearContent(id) {
 	const reset = document.getElementById(id);
-	const reOne = `<div class="pinch-zoom"><input type="file" accept=".png, .jpg, .jpeg" class="`;
-	const reTwo = `"/></div><label class="custom-file-upload"></label>`;
-	const orig = reOne + id + reTwo;
+	const reBeg = `<div class="pinch-zoom"><input type="file" accept=".png, .jpg, .jpeg" class="`;
+	const frame = id.replace('box','frame');	
+	const reThr = `"/></div><label class="custom-file-upload" for="`;
+	const reEnd = `"></label>`;
+	const orig = reBeg + id + `" id="` + frame + reThr + frame + reEnd;
 	reset.innerHTML = orig;
 	setTransitionDelay();
 };

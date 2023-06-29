@@ -42,6 +42,7 @@ Renders current page as a canvas image, by reading the DOM and the different sty
 * If installed, takes about less than 500kb. Maybe smaller if webfont was removed, since it's the biggest file. However, some Android phones only have the Roboto font so had to resort to Google fonts.
 * Had to copy the JS files to the repository since fetching them from the CDN uses an opaque request, which balloons their file sizes to an unpredictable number.
 * Created this since I find myself creating collages every week or so. All of the collage apps on the gPlay store took up MB of space, and my phone has very limited internal storage.
+* So. Many. Icons.
 
 <br>
 <br>

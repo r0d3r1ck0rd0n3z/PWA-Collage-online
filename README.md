@@ -24,7 +24,7 @@ However, bugs:
 
 <br>
 
-## Backend
+## Backend magic
 
 
 ### PinchZoom.js 

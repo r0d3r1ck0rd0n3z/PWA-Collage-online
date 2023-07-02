@@ -60,6 +60,7 @@ html {
 }
 body { 
  scroll-snap-type: both mandatory;
+ width: 92%;
 }
 	
 body, #topmost { background-color: var(--bg-color); }
@@ -250,7 +251,7 @@ button,
 
 #banner, #guide {
     font-family: lobster, fantasy, match, cursive;
-    width: 100%;
+    width: 106%;
     background-color: #82467B;
     color: white;
     padding: 10px 0px 10px 30px;
@@ -409,7 +410,16 @@ background-color: #82467B;
 
  <p> Troubleshooting
 </p>
-<button id="clearCache" onclick="caches.delete('collage-lite');" style="float: left; ">Clear cache</button> &nbsp; App is less than 500 kb, but large images may fill up the cache
+	
+<table style="border: solid 2px color:red;">
+<tr><td>
+<button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> 		
+</td><td>
+App is less than 500 kb, but large images may fill up the cache
+</td></tr>
+</table>
+
+
 
 <br/>
 

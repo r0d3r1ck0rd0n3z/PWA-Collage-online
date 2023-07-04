@@ -321,6 +321,12 @@ margin:  0px;
 padding: 0px;
 background-color: #82467B;
 }
+
+#gTwo {
+width: 100%;
+display: grid;
+grid-template-columns: 20% 70%;	
+}
          
       </style>
    </head>
@@ -410,28 +416,21 @@ background-color: #82467B;
 
  <p> Troubleshooting
 </p>
+
+<div id="gTwo">
+<div class="shoot"> <button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> </div>
+<div class="shoot"> App is less than 500 kb, but large images may fill up the cache. Click to reset cache. </div>
 	
-<table style="border: solid 2px color:red;">
-<tr><td>
-<button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> 		
-</td><td>
-App is less than 500 kb, but large images may fill up the cache
-</td></tr>
-</table>
+<div class="shoot"> <button id="install">Install to device</button> </div>
+<div class="shoot"> Click to add a shortcut on your app drawer. </div>
 
+<div class="shoot"> <button id="checkPWA" onclick="webapks();">Other suggestions</button> </div>
+<div class="shoot"> In case clear cache doesn't work, here's more tips you can try.</div>
 
+</div>
 
 <br/>
 
-
-
-<div id="buttonRowTwo" style="width: 100%;">
-    <center>
-	<button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> &nbsp; 
-	<button id="checkPWA" onclick="webapks();">Check PWA stats</button> &nbsp; 
-	<button id="install">Install to device</button>
-    </center>
-  </div>
 
 </div>
 

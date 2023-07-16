@@ -50,7 +50,7 @@
     --bg-color: #000;
 }
 @media all and (display-mode: standalone) {
-  #install {
+  #install,  .desktop {
     display: none;
   }
 }
@@ -411,8 +411,7 @@ background-color: #82467B;
 
  <p> Limitations
 </p> 
-  <ul><li> App is less than 500 kb, but large images may fill up the cache
- </li><li> Accepts only jpg and png formats
+  <ul><li> Accepts only jpg and png formats
  </li><li> All sessions temporary, no save state
  </li><li> Saves to local only; nothing leaves your device
 </li></ul>
@@ -424,8 +423,8 @@ background-color: #82467B;
 <div class="shoot"> <button id="clearCache" onclick="caches.delete('collage-lite');">Clear cache</button> </div>
 <div class="shoot"> App is less than 500 kb, but large images may fill up the cache. Click to reset cache. </div>
 	
-<div class="shoot"> <button id="install">Install to device</button> </div>
-<div class="shoot"> Click to add a shortcut on your app drawer. </div>
+<div class="shoot desktop"> <button id="install">Install to device</button> </div>
+<div class="shoot desktop"> Click to add a shortcut on your app drawer. </div>
 
 <div class="shoot"> <button id="checkPWA" onclick="webapks();">Other suggestions</button> </div>
 <div class="shoot"> In case clear cache doesn't work, here's more tips you can try.</div>
